@@ -22,3 +22,4 @@ urlpatterns = [
     path('', mainapp_views.index),
     path('products/', mainapp_views.products),
 ]
+

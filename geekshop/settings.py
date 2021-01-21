@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+# Добавлено 'mainapp'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -120,6 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#Lesson1
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
