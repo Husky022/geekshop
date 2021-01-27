@@ -121,7 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Lesson1
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
