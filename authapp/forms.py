@@ -34,7 +34,7 @@ class UserRegisterForm(UserCreationForm):
             field.widget.attrs['class'] = 'form-control py-4'
 
 class UserProfileForm(UserChangeForm):
-    avatar = forms.ImageField(widget=forms.FileInput())
+    avatar = forms.ImageField(widget=forms.FileInput(), required=False)
 
     class Meta:
         model = User
