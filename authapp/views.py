@@ -66,5 +66,4 @@ def verify(request, user_id, hash):
         user.activation_key = None
         user.save()
         auth.login(request, user)
-        # return HttpResponseRedirect(reverse('index'))
     return render(request, 'authapp/verification.html')
