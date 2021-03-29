@@ -1,6 +1,6 @@
 # from django import template
 #
-# register = template.library
+# register = template.library()
 #
 # def cut_words(value, length=3):
 #     return value[:length]
