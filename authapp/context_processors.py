@@ -16,3 +16,11 @@ def basket_price(request):
         price = 0
     return {'price': price}
 
+def basket_count(request):
+    user = request.user
+    if user.is_authenticated:
+        counter = Basket.objects.filter(user=user).count()
+    else:
+        counter = 0
+    return {'basket_counter': counter}
+

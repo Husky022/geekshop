@@ -73,6 +73,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'authapp.context_processors.user_status',
                 'authapp.context_processors.basket_price',
+                'authapp.context_processors.basket_count',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
