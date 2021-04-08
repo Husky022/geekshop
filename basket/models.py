@@ -5,6 +5,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from mainapp.models import Product
 from django.utils.timezone import now
+from django.utils.functional import cached_property
 
 # Create your models here.
 
@@ -41,12 +42,16 @@ class Basket(models.Model):
     def sum(self):
         return self.quantity * self.product.price
 
+    @cached_property
+    def get_baskets_from_user(self):
+        return Basket.objects.filter(user=self.user)
+
     def total_quantity(self):
-        baskets = Basket.objects.filter(user=self.user)
+        baskets = self.get_baskets_from_user
         return sum(basket.quantity for basket in baskets)
 
     def total_sum(self):
-        baskets = Basket.objects.filter(user=self.user)
+        baskets = self.get_baskets_from_user
         return sum(basket.sum() for basket in baskets)
 
     def delete(self, using=None, keep_parents=False):
