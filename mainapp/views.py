@@ -2,6 +2,7 @@ from django.shortcuts import render
 from datetime import datetime
 import json
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.decorators.cache import cache_page
 
 
 from mainapp.models import Product, ProductCategory
@@ -40,7 +41,7 @@ def products(request, category_id=None, page=1):
     per_page = 3
     paginator = Paginator(products.order_by('price'), per_page)
     products_paginator = paginator.page(page)
-    context = {'categories': ProductCategory.objects.all(), 'products': products_paginator}
+    context = {'categories': ProductCategory.get_all(), 'products': products_paginator}
     return render(request, 'mainapp/products.html', context)
 
 

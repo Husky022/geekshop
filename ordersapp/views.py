@@ -12,6 +12,7 @@ from basket.models import Basket
 from mainapp.models import Product
 from ordersapp.models import Order, OrderItem
 from ordersapp.forms import OrderItemForm
+from django.views.decorators.cache import cache_page
 
 
 class OrderList(ListView):
@@ -122,6 +123,7 @@ def order_forming_complete(request, pk):
     return HttpResponseRedirect(reverse('ordersapp:orders_list'))
 
 
+@cache_page(120)
 def get_product_price(request, pk):
     if request.is_ajax():
         product = Product.objects.filter(pk=int(pk)).first()
